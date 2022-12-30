@@ -15,6 +15,7 @@ router.route('/me')
 
 router.route('/:id')
     .get(userServices.getUserById)
+    //? admin permissions
     .patch(passportJWT.authenticate('jwt', {session: false}), roleMiddleware, userServices.patchUser)
     .delete(passportJWT.authenticate('jwt', {session: false}), roleMiddleware, userServices.deleteUser)
 

@@ -8,6 +8,7 @@ const db = require('./utils/database');
 const initModels = require('./models/initModels');
 const userRouter = require('./users/users.router');
 const authRouter = require('./auth/auth.router');
+const conversationRouter = require('./conversations/conversations.router')
 
 //? Initial Configs
 
@@ -42,7 +43,8 @@ app.get('/', (req, res) => {
 
 //? Definimos prefijo rutas
 app.use('/api/v1/users', userRouter);
-app.use('/api/v1/users', authRouter);
+app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/conversations', conversationRouter);
 
 app.listen(config.api.port, () => {
     console.log(`Sever started on ${config.api.host}`)
